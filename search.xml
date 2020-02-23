@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Visual Studio下竞赛环境设置</title>
-    <url>/2020/02/23/Computer_Science/Settings/Windows%E7%B3%BB%E7%BB%9F/0_Win%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE/</url>
+    <url>/2020/02/23/Computer_Science/Settings/Windows/0_Win_Settings/</url>
     <content><![CDATA[<h3 id="配置visual-studio项目属性"><a class="markdownIt-Anchor" href="#配置visual-studio项目属性"></a> 配置Visual Studio项目属性</h3>
 <ol>
 <li>创建empty C++ project</li>
@@ -16,14 +16,14 @@
 <p>在项目属性下的Debugging选项卡下找到Command Arguments，输入:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt; &quot;$(ProjectDir)test.in&quot; &gt;&quot;$(ProjectDir)test.out&quot;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>计算机科学 Computer Science</category>
-        <category>环境配置相关 Settings</category>
-        <category>Windows系统</category>
+        <category>Computer Science</category>
+        <category>General Settings</category>
+        <category>Windows</category>
       </categories>
   </entry>
   <entry>
     <title>Linux系统下竞赛环境设置</title>
-    <url>/2020/02/23/Computer_Science/Settings/Linux%E7%B3%BB%E7%BB%9F/0_Linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE/</url>
+    <url>/2020/02/23/Computer_Science/Settings/Linux/0_Linux_Settings/</url>
     <content><![CDATA[<h3 id="配置vim编辑器"><a class="markdownIt-Anchor" href="#配置vim编辑器"></a> 配置Vim编辑器</h3>
 <p>在<code>.vimrc</code>文件中写入以下配置信息：</p>
 <a id="more"></a>
@@ -35,9 +35,9 @@
 <p>竞赛中常把标准输入和标准输出分开，并尽可能从文件中读取输入。这里可把这些操作综合在一个<code>run.sh</code>文件中一步运行。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">g++ -Wall -Wshadow -std=c++11 main.cpp -o projectname</span><br><span class="line">./projectname &lt; test.in &gt; test.out</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>计算机科学 Computer Science</category>
-        <category>环境配置相关 Settings</category>
-        <category>Linux系统</category>
+        <category>Computer Science</category>
+        <category>General Settings</category>
+        <category>Linux</category>
       </categories>
   </entry>
 </search>
