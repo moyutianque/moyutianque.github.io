@@ -1,6 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Vim 编辑器的使用</title>
+    <url>/2020/03/04/Computer_Science/Programming_Skill/1_Vim/</url>
+    <content><![CDATA[<p>This blog based on my note studying Lecture 3 of MIT course “Missing Semester of your CS”. Which is about the useage of Vim Editor.</p>
+<a id="more"></a>
+<h3 id="normal-mode-in-any-other-mode-press-esc"><a class="markdownIt-Anchor" href="#normal-mode-in-any-other-mode-press-esc"></a> Normal mode (in any other mode, press <code>esc</code>)</h3>
+<p>Normal mode is designed for nevigating the content of the document and make small changes in the file.</p>
+<h4 id="nevigation"><a class="markdownIt-Anchor" href="#nevigation"></a> nevigation</h4>
+<figure class="highlight plain"><figcaption><span>cursor move (left, down, up, right)</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96;wb&#96;&#96;&#96; cursor move one word (forward (next), backward (last))</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;e&#96;&#96;&#96; cursor move to end of the word</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;0^$&#96;&#96;&#96; cursor move to (beginning, beginning charactor, end) of a line</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;&lt;C-u&gt;&#96;&#96;&#96;&#x2F;&#96;&#96;&#96;&lt;C-d&gt;&#96;&#96;&#96; cursor move (up, down) half page</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;gg&#96;&#96;&#96;&#x2F;&#96;&#96;&#96;G&#96;&#96;&#96; cursor move to (beginning, end) of file</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;HML&#96;&#96;&#96; cursor move to (Highest, Middle, Lowest) line of current page</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;f + any charactor&#96;&#96;&#96; cursor move forward (next) to find first (any charactor)</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;F + any charactor&#96;&#96;&#96; cursor move backward (last) to find the last (any charactor)</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;h&#96;&#96;&#96; hovering over different group (group by brackets), match the first group sign (left bracket).</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;%&#96;&#96;&#96; cursor jump back and forth between matching brackets</span><br><span class="line"></span><br><span class="line">&gt; Most nevigation key can combine with numbers for constant number of steps of move. e.g. 4k means press k for 4 times. </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### Small editing</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;o&#96;&#96;&#96; create a new line under the cursor and go into insert mode</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;O&#96;&#96;&#96; create a new line above the cursor and go into insert mode</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;d+w&#96;&#96;&#96; delete a word</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;d+e&#96;&#96;&#96; delete content from the cursor to the end of this word</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;c+w&#96;&#96;&#96; &#x3D;&#x3D; &#96;&#96;&#96;d+w&#96;&#96;&#96; + &#96;&#96;&#96;i&#96;&#96;&#96; means change one word</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;c+e&#96;&#96;&#96; &#x3D;&#x3D; &#96;&#96;&#96;d+e&#96;&#96;&#96; + &#96;&#96;&#96;i</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>delete a line</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96;cc&#96;&#96;&#96; &#x3D;&#x3D; &#96;&#96;&#96;dd&#96;&#96;&#96; + &#96;&#96;&#96;i</span><br></pre></td></tr></table></figure>
+<p><code>x</code> delete the charactor where cursor is</p>
+<p><code>r + any charactor</code> replace the charactor by (any charactor)</p>
+<p><code>yy</code> copy current line</p>
+<p><code>yw</code> copy a word</p>
+<p><code>p</code> paste</p>
+<p><code>.</code> repeat previous editing command. e.g. insert a word in the insert mode, <code>esc</code> and move to another place press <code>.</code>, it will repeat insert that word in current place.</p>
+<blockquote>
+<p>Note: Always combine with visual mode, select a region and press <code>y</code> for copy</p>
+</blockquote>
+<p><code>u</code> undo</p>
+<h4 id="modifiers"><a class="markdownIt-Anchor" href="#modifiers"></a> Modifiers</h4>
+<p><code>i</code> means ‘inside’, combine with other command. e.g. <code>ci[</code> means change content inside bracket [ ].</p>
+<p><code>a</code> means ‘around’, combine with other command. e.g. <code>da(</code> means delete content inside and including the bracket ( ).</p>
+<h3 id="insert-mode"><a class="markdownIt-Anchor" href="#insert-mode"></a> Insert mode</h3>
+<p>In the normal mode:</p>
+<p>press <code>i</code> to enter insert mode and place the cursor <mark>before</mark> current charactor (insert)</p>
+<p>press <code>a</code> to enter insert mode and place the cursor <mark>after</mark> current charactor (append)</p>
+<h3 id="replace-mode-press-r-in-normal-mode"><a class="markdownIt-Anchor" href="#replace-mode-press-r-in-normal-mode"></a> Replace mode (press <code>r</code> in normal mode)</h3>
+<h3 id="visual-mode"><a class="markdownIt-Anchor" href="#visual-mode"></a> Visual mode</h3>
+<p>From normal mode, you can either:</p>
+<ul>
+<li>press <code>v</code> to go into visual mode</li>
+<li>press <code>V</code> to go into visual line mode</li>
+<li>press <code>&lt;C-v&gt;</code> to go into visual block mode (rectangular block)</li>
+</ul>
+<p>Use the same keys as normal mode to quickly move cursor for quick selection.</p>
+<h3 id="command-line-mode"><a class="markdownIt-Anchor" href="#command-line-mode"></a> Command-line mode</h3>
+<p>In the normal mode, several key will start the command mode, <code>:</code> for common setting, <code>/</code> for search</p>
+<p><code>:w</code> save file</p>
+<p><code>:q</code> close file</p>
+<p><code>:!q</code> close file without saving</p>
+<p><code>/hello</code> search word ‘hello’, press <code>Enter</code> move to the returned result</p>
+<p><code>:10</code> means jump to line 10</p>
+]]></content>
+      <categories>
+        <category>Computer Science</category>
+        <category>Programming Skill</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Legal High 开篇，重新审视自己的信仰</title>
     <url>/2020/02/23/film-review/Legal_High/ep1/</url>
     <content><![CDATA[<p>Legal High 前三集讲述了新人律师黛真知子因为一起刑事辩护，与古美门律师相识之后的三个案件。如果说第一个案件让黛真知子第一次对律师职业的本质产生疑问，那么后两个案件让她理解了各行内部的或许不光彩但又无法撼动的内在规律。</p>
