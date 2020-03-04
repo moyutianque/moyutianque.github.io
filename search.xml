@@ -7,9 +7,30 @@
 <a id="more"></a>
 <h3 id="normal-mode-in-any-other-mode-press-esc"><a class="markdownIt-Anchor" href="#normal-mode-in-any-other-mode-press-esc"></a> Normal mode (in any other mode, press <code>esc</code>)</h3>
 <p>Normal mode is designed for nevigating the content of the document and make small changes in the file.</p>
-<h4 id="nevigation"><a class="markdownIt-Anchor" href="#nevigation"></a> nevigation</h4>
-<figure class="highlight plain"><figcaption><span>cursor move (left, down, up, right)</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96;wb&#96;&#96;&#96; cursor move one word (forward (next), backward (last))</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;e&#96;&#96;&#96; cursor move to end of the word</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;0^$&#96;&#96;&#96; cursor move to (beginning, beginning charactor, end) of a line</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;&lt;C-u&gt;&#96;&#96;&#96;&#x2F;&#96;&#96;&#96;&lt;C-d&gt;&#96;&#96;&#96; cursor move (up, down) half page</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;gg&#96;&#96;&#96;&#x2F;&#96;&#96;&#96;G&#96;&#96;&#96; cursor move to (beginning, end) of file</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;HML&#96;&#96;&#96; cursor move to (Highest, Middle, Lowest) line of current page</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;f + any charactor&#96;&#96;&#96; cursor move forward (next) to find first (any charactor)</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;F + any charactor&#96;&#96;&#96; cursor move backward (last) to find the last (any charactor)</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;h&#96;&#96;&#96; hovering over different group (group by brackets), match the first group sign (left bracket).</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;%&#96;&#96;&#96; cursor jump back and forth between matching brackets</span><br><span class="line"></span><br><span class="line">&gt; Most nevigation key can combine with numbers for constant number of steps of move. e.g. 4k means press k for 4 times. </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### Small editing</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;o&#96;&#96;&#96; create a new line under the cursor and go into insert mode</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;O&#96;&#96;&#96; create a new line above the cursor and go into insert mode</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;d+w&#96;&#96;&#96; delete a word</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;d+e&#96;&#96;&#96; delete content from the cursor to the end of this word</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;c+w&#96;&#96;&#96; &#x3D;&#x3D; &#96;&#96;&#96;d+w&#96;&#96;&#96; + &#96;&#96;&#96;i&#96;&#96;&#96; means change one word</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;c+e&#96;&#96;&#96; &#x3D;&#x3D; &#96;&#96;&#96;d+e&#96;&#96;&#96; + &#96;&#96;&#96;i</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>delete a line</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96;cc&#96;&#96;&#96; &#x3D;&#x3D; &#96;&#96;&#96;dd&#96;&#96;&#96; + &#96;&#96;&#96;i</span><br></pre></td></tr></table></figure>
+<h4 id="nevigation"><a class="markdownIt-Anchor" href="#nevigation"></a> Nevigation</h4>
+<p><code>h/j/k/l</code> cursor move (left, down, up, right)</p>
+<p><code>w/b</code> cursor move one word (forward (next), backward (last))</p>
+<p><code>e</code> cursor move to end of the word</p>
+<p><code>0/^/$</code> cursor move to (beginning, beginning charactor, end) of a line</p>
+<p><code>&lt;C-u&gt;</code>/<code>&lt;C-d&gt;</code> cursor move (up, down) half page</p>
+<p><code>gg</code>/<code>G</code> cursor move to (beginning, end) of file</p>
+<p><code>HML</code> cursor move to (Highest, Middle, Lowest) line of current page</p>
+<p><code>f + any charactor</code> cursor move forward (next) to find first (any charactor)</p>
+<p><code>F + any charactor</code> cursor move backward (last) to find the last (any charactor)</p>
+<p><code>h</code> hovering over different group (group by brackets), match the first group sign (left bracket).</p>
+<p><code>%</code> cursor jump back and forth between matching brackets</p>
+<blockquote>
+<p>Most nevigation key can combine with numbers for constant number of steps of move. e.g. 4k means press k for 4 times.</p>
+</blockquote>
+<h4 id="small-editing"><a class="markdownIt-Anchor" href="#small-editing"></a> Small editing</h4>
+<p><code>o</code> create a new line under the cursor and go into insert mode</p>
+<p><code>O</code> create a new line above the cursor and go into insert mode</p>
+<p><code>d+w</code> delete a word</p>
+<p><code>d+e</code> delete content from the cursor to the end of this word</p>
+<p><code>c+w</code> == <code>d+w</code> + <code>i</code> means change one word</p>
+<p><code>c+e</code> == <code>d+e``` +</code>i`</p>
+<p><code>dd</code> delete a line</p>
+<p><code>cc</code> == <code>dd</code> + <code>i</code></p>
 <p><code>x</code> delete the charactor where cursor is</p>
 <p><code>r + any charactor</code> replace the charactor by (any charactor)</p>
 <p><code>yy</code> copy current line</p>
