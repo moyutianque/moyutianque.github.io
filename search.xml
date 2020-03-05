@@ -112,6 +112,7 @@ python文件也可以通过解释器声明以直接运行，而不用在命令�
 <h2 id="为什么需要先-git-add-而不直接设计成一键更新"><a class="markdownIt-Anchor" href="#为什么需要先-git-add-而不直接设计成一键更新"></a> 为什么需要先 <code>git add</code> 而不直接设计成一键更新</h2>
 <p>首先，通过 <code>git add file1</code> 向git的管理系统声明 <strong>file1</strong> 是有先后的意义，也就是说如果之后又有 <code>git add file2</code> 则 <strong>file2</strong> 在历史记录中会在 <strong>file1</strong> 之后出现，先 <code>git add</code> 再整体 <code>git commit</code> 的设计可以体现这种文件出现的先后顺序。</p>
 <p>其次，对于许多的编程语言编译时会在当前文件夹产生非代码的编译文件，这些很多时候是在提交代码时不需要的。如果每次都把文件夹内容全部 <code>commit</code>，则不可避免会记录这些次要文件的改动。</p>
+<p><mark>Note</mark>: 对于commit的subject，使用祈使句，字数少于 50。</p>
 <hr>
 <h2 id="过去内容的访问和回溯"><a class="markdownIt-Anchor" href="#过去内容的访问和回溯"></a> 过去内容的访问和回溯</h2>
 <p><code>git checkout commit_id</code> 在 <code>commit_id</code> 部分填入想要访问的过去版本的commit的id，当前文件夹的内容会变成过去的版本。通过 <code>git checkout master</code> 可回到现在的版本。</p>
