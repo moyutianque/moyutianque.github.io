@@ -1,6 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Shell 的使用</title>
+    <url>/2020/03/05/Computer_Science/Programming_Skill/0_Shell/</url>
+    <content><![CDATA[<p>This blog based on my note studying Lecture 1,2,5 of MIT course “Missing Semester of your CS”. Which is about the useage of Shell.</p>
+<a id="more"></a>
+<hr>
+<h2 id="shell-命令"><a class="markdownIt-Anchor" href="#shell-命令"></a> Shell 命令</h2>
+<h3 id="环境变量"><a class="markdownIt-Anchor" href="#环境变量"></a> 环境变量</h3>
+<p>$PATH  — means environment variables, so you can echo $PATH to see all the directories added to $PATH</p>
+<h3 id="directory-有关命令"><a class="markdownIt-Anchor" href="#directory-有关命令"></a> directory 有关命令</h3>
+<p><code>pwd</code> — means print working directory</p>
+<p><code>which python</code> — means if application python is added in environment, print its directory</p>
+<h3 id="cd-命令"><a class="markdownIt-Anchor" href="#cd-命令"></a> cd 命令</h3>
+<p><code>cd -</code> — means enter the previous directory</p>
+<h3 id="ls-命令"><a class="markdownIt-Anchor" href="#ls-命令"></a> ls 命令</h3>
+<p>当使用 <code>ls -l</code> 命令时，第一个部分每三个字节代表一个层级的用户的访问权限 <br><br />
+例如: <code>-rwxr-xr-x</code> root可以读取写入和执行，第一个rwx是owner的权限，r-w是group的权限，最后一个r-w是其他人的权限</p>
+<p>对于文件权限<br><br />
+<code>r</code> — read      可以用打开文件 <br><br />
+<code>w</code> — write     可以修改该文件 <br><br />
+<code>x</code> — execute   可以运行该文件</p>
+<p>对于文件夹权限<br><br />
+<code>r</code> — read      可以用ls来看文件夹内的文件<br><br />
+<code>w</code> — write     可以修改该文件夹<br><br />
+<code>x</code> — execute   可以进入这个文件夹</p>
+<h3 id="文件夹和文件的基本操作"><a class="markdownIt-Anchor" href="#文件夹和文件的基本操作"></a> 文件夹和文件的基本操作</h3>
+<p><code>mv dir1 dir2</code>— rename/move <br><br />
+<code>rm file</code> — remove file <br><br />
+<code>rmdir</code> — remove directory <br><br />
+<code>mkdir</code> — create directory <br><br />
+<code>cat file</code> — print the content of a file <br></p>
+<p><code>find dir -name filename -type filetype</code> — 在dir下找match filename的所有文件(type f)或文件夹(type d) <br><br />
+<mark>Tricks</mark>：<br></p>
+<ol>
+<li>自定义查找，可以用-path属性结合formatable string，例如<br />
+<code>find ./project -path '**/test/*.py' -type f</code> <br><br />
+用于查找project目录下的所有文件夹下test下的py文件<br></li>
+<li>可以在查找结果中通过 <code>-exec</code> 属性直接对找到的文件操作，例如<br />
+<code>find ./project -name &quot;*.tmp&quot; -exec rm {} \;</code> <br><br />
+删除所有tmp文件，其中;指的结束rm这一条指令，相当于回车符</li>
+</ol>
+<p><code>rg string -t py -C 5 dir</code> — 在dir下所有py结尾的文件夹中查找string并返回其5行的context内容  （rg 为加强版的grep全称为ripgrep）<br><br />
+<code>chmod</code> — 修改文件权限 <br></p>
+<p><code>touch</code> — 修改文件时间戳，创建文件 <br><br />
+<mark>Tricks</mark>：<br></p>
+<ul>
+<li>比如要创建test1 test2 test3三个文件<br />
+则利用shell自带的拓展语法{ , , , }即可<br />
+<code>touch test{1,2,3}</code></li>
+</ul>
+<h3 id="关于一些program的基本shell端指令"><a class="markdownIt-Anchor" href="#关于一些program的基本shell端指令"></a> 关于一些program的基本shell端指令</h3>
+<p><code>man app</code> — show the program menu 一般即是 --help 的内容 <br><br />
+<code>tldr app</code> — show examples of how to use this app <br><br />
+<code>left | right</code> — output of left program to be the input of right program <br><br />
+<code>sudo</code> — do as super user</p>
+<h3 id="shell-上的一些快捷操作"><a class="markdownIt-Anchor" href="#shell-上的一些快捷操作"></a> Shell 上的一些快捷操作</h3>
+<p>快捷键 <code>ctrl+l</code> — 清空shell <br><br />
+快捷键 <code>ctrl+r</code> — 在shell的history中开搜索框 <br><br />
+<code>history</code> — recent command history <br><br />
+<code>history 1</code> — 所有command的history <br><br />
+<code>history 1 | grep string</code> — 在所有history中找到匹配string的指令 <br><br />
+<code>tree</code> — 文件夹构成 <br><br />
+<code>broot</code> — 增强版tree，会折叠部分信息，支持文件搜索功能 <br><br />
+<code>nnn</code> — 增强版tree，支持快速进入不同的directory</p>
+<hr>
+<h2 id="bash-程序"><a class="markdownIt-Anchor" href="#bash-程序"></a> Bash 程序</h2>
+<h3 id="文件头声明"><a class="markdownIt-Anchor" href="#文件头声明"></a> 文件头声明</h3>
+<p>在 <code>.sh</code> 文件前声明 <br></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+<p>指该文件是由bash解释器运行的命令程序<br><br />
+<mark>Tricks</mark>：<br><br />
+python文件也可以通过解释器声明以直接运行，而不用在命令行打python3</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">!#&#x2F;usr&#x2F;bin&#x2F;env python3</span><br></pre></td></tr></table></figure>
+<p>操作系统会根据env下python3的安装路径找到python3解释器</p>
+<h3 id="bash-程序变量"><a class="markdownIt-Anchor" href="#bash-程序变量"></a> bash 程序变量</h3>
+<p>变量由 <code>$var_name</code> 表示 <br><br />
+<code>$+数字</code> — 代表输入字符串的第几个string的内容 <code>$0</code> 是第一个string <br><br />
+<code>$(pwd)</code> — pwd命令执行后的返回的string内容</p>
+<h3 id="样例程序"><a class="markdownIt-Anchor" href="#样例程序"></a> 样例程序</h3>
+<p>example code 写在 <code>example.sh</code> 下<br />
+该程序用于在多个文件中找foobar这个词，如果没有就添加</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Starting program at <span class="variable">$(date)</span>"</span> <span class="comment"># Date will be substituted</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Running program <span class="variable">$0</span> with <span class="variable">$#</span> arguments with pid $$"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历$1到$n每个文件</span></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> <span class="variable">$@</span>; <span class="keyword">do</span></span><br><span class="line">    grep foobar <span class="variable">$file</span> &gt; /dev/null 2&gt; /dev/null <span class="comment"># grep is used for search a word in file</span></span><br><span class="line">    <span class="comment"># When pattern is not found, grep has exit status 1</span></span><br><span class="line">    <span class="comment"># We redirect STDOUT and STDERR to a null register since we do not care about them</span></span><br><span class="line"></span><br><span class="line">   <span class="comment"># -ne 'means not equal to'</span></span><br><span class="line">    <span class="keyword">if</span> [[ $? -ne 0 ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"File <span class="variable">$file</span> does not have any foobar, adding one"</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"# foobar"</span> &gt;&gt; <span class="string">"<span class="variable">$file</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>示例运行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./example.sh hello.py a.sh b.txt</span><br></pre></td></tr></table></figure>
+<p>即在 <code>hello.py a.sh b.txt</code> 三个文件中查找foobar，如果没有就添加</p>
+<h2 id="tmux-终端复用软件"><a class="markdownIt-Anchor" href="#tmux-终端复用软件"></a> tmux 终端复用软件</h2>
+<p>是 screen 的升级版，可以更有效的分隔创建 terminal</p>
+<p>可参考 <span class="exturl" data-url="aHR0cHM6Ly93d3cuaGFtdm9ja2UuY29tL2Jsb2cvYS1xdWljay1hbmQtZWFzeS1ndWlkZS10by10bXV4Lw==" title="https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/">tmux tutorial<i class="fa fa-external-link"></i></span></p>
+<h2 id="alias-用于定义一段command的简称"><a class="markdownIt-Anchor" href="#alias-用于定义一段command的简称"></a> alias 用于定义一段command的简称</h2>
+<p>在 <code>~/.bashrc</code> 中添加以下代码，则可输入 <code>gs</code> 以执行 <code>git status</code> 指令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> gs=<span class="string">"git status"</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Computer Science</category>
+        <category>Programming Skill</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>git 版本控制</title>
+    <url>/2020/03/05/Computer_Science/Programming_Skill/2_git/</url>
+    <content><![CDATA[<p>This blog based on my note studying Lecture 6 of MIT course “Missing Semester of your CS”. Which is about the useage of git for version control.</p>
+<a id="more"></a>
+<hr>
+<h2 id="查询git信息的指令"><a class="markdownIt-Anchor" href="#查询git信息的指令"></a> 查询git信息的指令</h2>
+<p><code>git init</code> 用于在当前文件夹下创建git有关的记录文件，成为一个repository</p>
+<p><code>git log --all --graph --decorate</code> 用于看这个repository的commit graph，现在所处的版本会在graph中标记为 <code>HEAD</code>。如果需要精简版，可以加入属性 <code>--oneline</code>。</p>
+<p><code>git status</code> 用于查看将会被 commit 的文件列表 (通过 <code>git add</code> 会显示为 tracked)</p>
+<p><code>git show commit_id</code> 可以看某一次 commit 的提交信息和改动的地方</p>
+<hr>
+<h2 id="为什么需要先-git-add-而不直接设计成一键更新"><a class="markdownIt-Anchor" href="#为什么需要先-git-add-而不直接设计成一键更新"></a> 为什么需要先 <code>git add</code> 而不直接设计成一键更新</h2>
+<p>首先，通过 <code>git add file1</code> 向git的管理系统声明 <strong>file1</strong> 是有先后的意义，也就是说如果之后又有 <code>git add file2</code> 则 <strong>file2</strong> 在历史记录中会在 <strong>file1</strong> 之后出现，先 <code>git add</code> 再整体 <code>git commit</code> 的设计可以体现这种文件出现的先后顺序。</p>
+<p>其次，对于许多的编程语言编译时会在当前文件夹产生非代码的编译文件，这些很多时候是在提交代码时不需要的。如果每次都把文件夹内容全部 <code>commit</code>，则不可避免会记录这些次要文件的改动。</p>
+<hr>
+<h2 id="过去内容的访问和回溯"><a class="markdownIt-Anchor" href="#过去内容的访问和回溯"></a> 过去内容的访问和回溯</h2>
+<p><code>git checkout commit_id</code> 在 <code>commit_id</code> 部分填入想要访问的过去版本的commit的id，当前文件夹的内容会变成过去的版本。通过 <code>git checkout master</code> 可回到现在的版本。</p>
+<p><code>git diff commit_id file_1</code> 可以比较当前版本与 <code>commit_id</code> 版本 <code>file_1</code> 文件的改变。</p>
+<p><code>git diff commit_id commit_id2 file_1</code> 可以比较 <code>commit_id2</code>版本在 <code>commit_id</code> 版本基础上 <code>file_1</code> 文件的改变。</p>
+<p><code>git reset --hard commit_id</code> 回退到 <code>commit_id</code> 的版本</p>
+<p>如果想回到回退前的版本，需要以下两步 <br></p>
+<ul>
+<li><code>git reflog</code> 查看 reset 等操作的历史，找到操作的id</li>
+<li><code>git reset --hard ref_id</code> 回退到回退前的状态</li>
+</ul>
+<h2 id="在git中创建和整合分支"><a class="markdownIt-Anchor" href="#在git中创建和整合分支"></a> 在git中创建和整合分支</h2>
+<p><code>git branch</code> 可以显示当前有哪些分支</p>
+<p><code>git branch branch_name</code> 在 <code>branch_name</code> 中输入新名字，则会在当前版本下创建新分支。</p>
+<p><code>git checkout branch_name</code> 可以跳转到 <code>branch_name</code> 分支</p>
+<p><code>git merge branch_name</code> 可以把 <code>branch_name</code> 分支整合入当前版本当前分支。如果发生内容冲突，git会提示哪个文件出现了冲突。修改文件保存后，重新 <code>git add file_conflict</code>， 然后 <code>git merge --continue</code> 以继续进行 merge。</p>
+<h2 id="在git中连接远程的另一个repository"><a class="markdownIt-Anchor" href="#在git中连接远程的另一个repository"></a> 在git中连接远程的另一个repository</h2>
+<p><code>git remote add origin https://github.com/user_name/repository_name.git</code> 命名远端repository为 <code>origin</code></p>
+<p><code>git push origin local_branch_name:remote_branch_name</code> 用于上传更新到远端</p>
+<p><mark>Tricks</mark> <br><br />
+为了简化上传操作，可以先把 local 和 remote 的 branch 声明有关 <br><br />
+<code>git branch --set-upstream-to=origin/remote_branch_name</code> <br><br />
+之后只需 <code>git push</code> 即可更新远端。</p>
+]]></content>
+      <categories>
+        <category>Computer Science</category>
+        <category>Programming Skill</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Vim 编辑器的使用</title>
     <url>/2020/03/04/Computer_Science/Programming_Skill/1_Vim/</url>
     <content><![CDATA[<p>This blog based on my note studying Lecture 3 of MIT course “Missing Semester of your CS”. Which is about the useage of Vim Editor.</p>

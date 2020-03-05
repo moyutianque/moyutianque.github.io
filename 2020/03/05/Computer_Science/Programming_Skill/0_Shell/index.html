@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://moyutianque.github.io').hostname,
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.7.1',
+    exturl: true,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="This blog based on my note studying Lecture 1,2,5 of MIT course “Missing Semester of your CS”. Which is about the useage of Shell.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shell 的使用">
+<meta property="og:url" content="https://moyutianque.github.io/2020/03/05/Computer_Science/Programming_Skill/0_Shell/index.html">
+<meta property="og:site_name" content="Zeke96&#39;s Blog">
+<meta property="og:description" content="This blog based on my note studying Lecture 1,2,5 of MIT course “Missing Semester of your CS”. Which is about the useage of Shell.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-05T15:19:54.902Z">
+<meta property="article:modified_time" content="2020-03-05T16:31:43.330Z">
+<meta property="article:author" content="zeke96">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://moyutianque.github.io/2020/03/05/Computer_Science/Programming_Skill/0_Shell/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Shell 的使用 | Zeke96's Blog</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?62e8bd9c1c99a462a159de59d3179d33# <app_id>";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zeke96's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">負けないで</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-年度总结">
+
+    <a href="/annual_review/" rel="section"><i class="fa fa-fw fa-coffee"></i>年度总结</a>
+
+  </li>
+
+
+      
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">6</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL21veXV0aWFucXVl" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://moyutianque.github.io/2020/03/05/Computer_Science/Programming_Skill/0_Shell/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar1.png">
+      <meta itemprop="name" content="zeke96">
+      <meta itemprop="description" content="学计算机的日麻爱好者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zeke96's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Shell 的使用<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL21veXV0aWFucXVlL3pla2VCbG9nL2VkaXQvbWFzdGVyL3NvdXJjZS9fcG9zdHMvQ29tcHV0ZXJfU2NpZW5jZS9Qcm9ncmFtbWluZ19Ta2lsbC8wX1NoZWxsLm1k" title="编辑"><i class="fa fa-pencil"></i></span>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-05 16:19:54 / 修改时间：17:31:43" itemprop="dateCreated datePublished" datetime="2020-03-05T16:19:54+01:00">2020-03-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Science</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Programming-Skill/" itemprop="url" rel="index">
+                    <span itemprop="name">Programming Skill</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>This blog based on my note studying Lecture 1,2,5 of MIT course “Missing Semester of your CS”. Which is about the useage of Shell.</p>
+<a id="more"></a>
+<hr>
+<h2 id="shell-命令"><a class="markdownIt-Anchor" href="#shell-命令"></a> Shell 命令</h2>
+<h3 id="环境变量"><a class="markdownIt-Anchor" href="#环境变量"></a> 环境变量</h3>
+<p>$PATH  — means environment variables, so you can echo $PATH to see all the directories added to $PATH</p>
+<h3 id="directory-有关命令"><a class="markdownIt-Anchor" href="#directory-有关命令"></a> directory 有关命令</h3>
+<p><code>pwd</code> — means print working directory</p>
+<p><code>which python</code> — means if application python is added in environment, print its directory</p>
+<h3 id="cd-命令"><a class="markdownIt-Anchor" href="#cd-命令"></a> cd 命令</h3>
+<p><code>cd -</code> — means enter the previous directory</p>
+<h3 id="ls-命令"><a class="markdownIt-Anchor" href="#ls-命令"></a> ls 命令</h3>
+<p>当使用 <code>ls -l</code> 命令时，第一个部分每三个字节代表一个层级的用户的访问权限 <br><br />
+例如: <code>-rwxr-xr-x</code> root可以读取写入和执行，第一个rwx是owner的权限，r-w是group的权限，最后一个r-w是其他人的权限</p>
+<p>对于文件权限<br><br />
+<code>r</code> — read      可以用打开文件 <br><br />
+<code>w</code> — write     可以修改该文件 <br><br />
+<code>x</code> — execute   可以运行该文件</p>
+<p>对于文件夹权限<br><br />
+<code>r</code> — read      可以用ls来看文件夹内的文件<br><br />
+<code>w</code> — write     可以修改该文件夹<br><br />
+<code>x</code> — execute   可以进入这个文件夹</p>
+<h3 id="文件夹和文件的基本操作"><a class="markdownIt-Anchor" href="#文件夹和文件的基本操作"></a> 文件夹和文件的基本操作</h3>
+<p><code>mv dir1 dir2</code>— rename/move <br><br />
+<code>rm file</code> — remove file <br><br />
+<code>rmdir</code> — remove directory <br><br />
+<code>mkdir</code> — create directory <br><br />
+<code>cat file</code> — print the content of a file <br></p>
+<p><code>find dir -name filename -type filetype</code> — 在dir下找match filename的所有文件(type f)或文件夹(type d) <br><br />
+<mark>Tricks</mark>：<br></p>
+<ol>
+<li>自定义查找，可以用-path属性结合formatable string，例如<br />
+<code>find ./project -path '**/test/*.py' -type f</code> <br><br />
+用于查找project目录下的所有文件夹下test下的py文件<br></li>
+<li>可以在查找结果中通过 <code>-exec</code> 属性直接对找到的文件操作，例如<br />
+<code>find ./project -name &quot;*.tmp&quot; -exec rm {} \;</code> <br><br />
+删除所有tmp文件，其中;指的结束rm这一条指令，相当于回车符</li>
+</ol>
+<p><code>rg string -t py -C 5 dir</code> — 在dir下所有py结尾的文件夹中查找string并返回其5行的context内容  （rg 为加强版的grep全称为ripgrep）<br><br />
+<code>chmod</code> — 修改文件权限 <br></p>
+<p><code>touch</code> — 修改文件时间戳，创建文件 <br><br />
+<mark>Tricks</mark>：<br></p>
+<ul>
+<li>比如要创建test1 test2 test3三个文件<br />
+则利用shell自带的拓展语法{ , , , }即可<br />
+<code>touch test{1,2,3}</code></li>
+</ul>
+<h3 id="关于一些program的基本shell端指令"><a class="markdownIt-Anchor" href="#关于一些program的基本shell端指令"></a> 关于一些program的基本shell端指令</h3>
+<p><code>man app</code> — show the program menu 一般即是 --help 的内容 <br><br />
+<code>tldr app</code> — show examples of how to use this app <br><br />
+<code>left | right</code> — output of left program to be the input of right program <br><br />
+<code>sudo</code> — do as super user</p>
+<h3 id="shell-上的一些快捷操作"><a class="markdownIt-Anchor" href="#shell-上的一些快捷操作"></a> Shell 上的一些快捷操作</h3>
+<p>快捷键 <code>ctrl+l</code> — 清空shell <br><br />
+快捷键 <code>ctrl+r</code> — 在shell的history中开搜索框 <br><br />
+<code>history</code> — recent command history <br><br />
+<code>history 1</code> — 所有command的history <br><br />
+<code>history 1 | grep string</code> — 在所有history中找到匹配string的指令 <br><br />
+<code>tree</code> — 文件夹构成 <br><br />
+<code>broot</code> — 增强版tree，会折叠部分信息，支持文件搜索功能 <br><br />
+<code>nnn</code> — 增强版tree，支持快速进入不同的directory</p>
+<hr>
+<h2 id="bash-程序"><a class="markdownIt-Anchor" href="#bash-程序"></a> Bash 程序</h2>
+<h3 id="文件头声明"><a class="markdownIt-Anchor" href="#文件头声明"></a> 文件头声明</h3>
+<p>在 <code>.sh</code> 文件前声明 <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+<p>指该文件是由bash解释器运行的命令程序<br><br />
+<mark>Tricks</mark>：<br><br />
+python文件也可以通过解释器声明以直接运行，而不用在命令行打python3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!#&#x2F;usr&#x2F;bin&#x2F;env python3</span><br></pre></td></tr></table></figure>
+<p>操作系统会根据env下python3的安装路径找到python3解释器</p>
+<h3 id="bash-程序变量"><a class="markdownIt-Anchor" href="#bash-程序变量"></a> bash 程序变量</h3>
+<p>变量由 <code>$var_name</code> 表示 <br><br />
+<code>$+数字</code> — 代表输入字符串的第几个string的内容 <code>$0</code> 是第一个string <br><br />
+<code>$(pwd)</code> — pwd命令执行后的返回的string内容</p>
+<h3 id="样例程序"><a class="markdownIt-Anchor" href="#样例程序"></a> 样例程序</h3>
+<p>example code 写在 <code>example.sh</code> 下<br />
+该程序用于在多个文件中找foobar这个词，如果没有就添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Starting program at <span class="variable">$(date)</span>"</span> <span class="comment"># Date will be substituted</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Running program <span class="variable">$0</span> with <span class="variable">$#</span> arguments with pid $$"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历$1到$n每个文件</span></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> <span class="variable">$@</span>; <span class="keyword">do</span></span><br><span class="line">    grep foobar <span class="variable">$file</span> &gt; /dev/null 2&gt; /dev/null <span class="comment"># grep is used for search a word in file</span></span><br><span class="line">    <span class="comment"># When pattern is not found, grep has exit status 1</span></span><br><span class="line">    <span class="comment"># We redirect STDOUT and STDERR to a null register since we do not care about them</span></span><br><span class="line"></span><br><span class="line">   <span class="comment"># -ne 'means not equal to'</span></span><br><span class="line">    <span class="keyword">if</span> [[ $? -ne 0 ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"File <span class="variable">$file</span> does not have any foobar, adding one"</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"# foobar"</span> &gt;&gt; <span class="string">"<span class="variable">$file</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>示例运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./example.sh hello.py a.sh b.txt</span><br></pre></td></tr></table></figure>
+<p>即在 <code>hello.py a.sh b.txt</code> 三个文件中查找foobar，如果没有就添加</p>
+<h2 id="tmux-终端复用软件"><a class="markdownIt-Anchor" href="#tmux-终端复用软件"></a> tmux 终端复用软件</h2>
+<p>是 screen 的升级版，可以更有效的分隔创建 terminal</p>
+<p>可参考 <span class="exturl" data-url="aHR0cHM6Ly93d3cuaGFtdm9ja2UuY29tL2Jsb2cvYS1xdWljay1hbmQtZWFzeS1ndWlkZS10by10bXV4Lw==" title="https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/">tmux tutorial<i class="fa fa-external-link"></i></span></p>
+<h2 id="alias-用于定义一段command的简称"><a class="markdownIt-Anchor" href="#alias-用于定义一段command的简称"></a> alias 用于定义一段command的简称</h2>
+<p>在 <code>~/.bashrc</code> 中添加以下代码，则可输入 <code>gs</code> 以执行 <code>git status</code> 指令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> gs=<span class="string">"git status"</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/05/Computer_Science/Programming_Skill/2_git/" rel="prev" title="git 版本控制">
+      <i class="fa fa-chevron-left"></i> git 版本控制
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#shell-命令"><span class="nav-number">1.</span> <span class="nav-text"> Shell 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境变量"><span class="nav-number">1.1.</span> <span class="nav-text"> 环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#directory-有关命令"><span class="nav-number">1.2.</span> <span class="nav-text"> directory 有关命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cd-命令"><span class="nav-number">1.3.</span> <span class="nav-text"> cd 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ls-命令"><span class="nav-number">1.4.</span> <span class="nav-text"> ls 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件夹和文件的基本操作"><span class="nav-number">1.5.</span> <span class="nav-text"> 文件夹和文件的基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于一些program的基本shell端指令"><span class="nav-number">1.6.</span> <span class="nav-text"> 关于一些program的基本shell端指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shell-上的一些快捷操作"><span class="nav-number">1.7.</span> <span class="nav-text"> Shell 上的一些快捷操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-程序"><span class="nav-number">2.</span> <span class="nav-text"> Bash 程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件头声明"><span class="nav-number">2.1.</span> <span class="nav-text"> 文件头声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bash-程序变量"><span class="nav-number">2.2.</span> <span class="nav-text"> bash 程序变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样例程序"><span class="nav-number">2.3.</span> <span class="nav-text"> 样例程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tmux-终端复用软件"><span class="nav-number">3.</span> <span class="nav-text"> tmux 终端复用软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#alias-用于定义一段command的简称"><span class="nav-number">4.</span> <span class="nav-text"> alias 用于定义一段command的简称</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zeke96"
+      src="/images/avatar1.png">
+  <p class="site-author-name" itemprop="name">zeke96</p>
+  <div class="site-description" itemprop="description">学计算机的日麻爱好者</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21veXV0aWFucXVl" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;moyutianque"><i class="fa fa-fw fa-github"></i>GitHub</span>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-codepen"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zeke96</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">10k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">9 分钟</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
