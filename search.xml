@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>一些常用的debug技巧</title>
+    <url>/2020/03/06/Computer_Science/Programming_Skill/3_debug/</url>
+    <content><![CDATA[<p>This blog based on my note studying Lecture 7 of MIT course “Missing Semester of your CS”. Which is about the debugging strategies.</p>
+<a id="more"></a>
+<hr>
+<h2 id="log-记录程序运行问题"><a class="markdownIt-Anchor" href="#log-记录程序运行问题"></a> log 记录程序运行问题</h2>
+<p>首先，Unix系统下会有个 <code>/var/log</code> 文件夹，存放系统相关的 log，比如 <code>system.log</code>，可以通过以下指令查看该文件的内容，<code>--last</code> 查看多久范围的 <code>system.log</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">log</span> show --last 10s</span><br></pre></td></tr></table></figure>
+<h2 id="profile"><a class="markdownIt-Anchor" href="#profile"></a> profile</h2>
+<p>profile 用于记录不同代码段的运行时间，调用次数等信息，两个工具可以做到这一点。这一节主要以 python 程序为例。</p>
+<h3 id="cprofile"><a class="markdownIt-Anchor" href="#cprofile"></a> cProfile</h3>
+<p>第一个用 python 本身带的模式 <code>cProfile</code>，可以在命令中加入，其中 <code>tac</code> 用于反向输出，更符合阅读习惯。向下滚动命令行会看到占用时间越来越多的代码段。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m cProfile -s tottime example.py | tac</span><br></pre></td></tr></table></figure>
+<h3 id="line-profiler"><a class="markdownIt-Anchor" href="#line-profiler"></a> line profiler</h3>
+<p>另一个比较好的软件是 <mark><strong>line_profiler</strong></mark> 可以显示代码每行所占用的运行时间比例。只需要在想要 profile 的子函数前加 <code>@profile</code> 即可。</p>
+<p>我们可以通过 pip 安装 profiler</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install line_profiler</span><br></pre></td></tr></table></figure>
+<p>在代码中加入 <code>@profile</code> 后，通过以下指令运行 python 程序</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">kernprof -l -v example.py</span><br></pre></td></tr></table></figure>
+<p>通过以下代码还可以查看代码的 memory 使用情况</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m memory_profiler example.py</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Computer Science</category>
+        <category>Programming Skill</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Shell 的使用</title>
     <url>/2020/03/05/Computer_Science/Programming_Skill/0_Shell/</url>
     <content><![CDATA[<p>This blog based on my note studying Lecture 1,2,5 of MIT course “Missing Semester of your CS”. Which is about the useage of Shell.</p>
@@ -24,7 +52,9 @@
 <p>对于文件夹权限<br><br />
 <code>r</code> — read      可以用ls来看文件夹内的文件<br><br />
 <code>w</code> — write     可以修改该文件夹<br><br />
-<code>x</code> — execute   可以进入这个文件夹</p>
+<code>x</code> — execute   可以cd进入这个文件夹</p>
+<p><code>chmod</code> — 修改文件(夹)权限 <br><br />
+e.g. <code>chmod -R -w foldername</code> 其中 <code>-R</code> 等价于 <code>--recursive</code> 用于递归的修改文件夹及内部所有内容的权限，<code>-w</code> 为删除 write 权限，<code>+w</code> 为增加 write 权限。</p>
 <h3 id="文件夹和文件的基本操作"><a class="markdownIt-Anchor" href="#文件夹和文件的基本操作"></a> 文件夹和文件的基本操作</h3>
 <p><code>mv dir1 dir2</code>— rename/move <br><br />
 <code>rm file</code> — remove file <br><br />
@@ -41,8 +71,7 @@
 <code>find ./project -name &quot;*.tmp&quot; -exec rm {} \;</code> <br><br />
 删除所有tmp文件，其中;指的结束rm这一条指令，相当于回车符</li>
 </ol>
-<p><code>rg string -t py -C 5 dir</code> — 在dir下所有py结尾的文件夹中查找string并返回其5行的context内容  （rg 为加强版的grep全称为ripgrep）<br><br />
-<code>chmod</code> — 修改文件权限 <br></p>
+<p><code>rg string -t py -C 5 dir</code> — 在dir下所有py结尾的文件夹中查找string并返回其5行的context内容  （rg 为加强版的grep全称为ripgrep）<br></p>
 <p><code>touch</code> — 修改文件时间戳，创建文件 <br><br />
 <mark>Tricks</mark>：<br></p>
 <ul>

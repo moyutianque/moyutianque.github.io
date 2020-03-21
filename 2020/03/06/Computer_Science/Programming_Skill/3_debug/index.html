@@ -48,19 +48,19 @@
   };
 </script>
 
-  <meta name="description" content="鉴于我终于在《雀魂》中进入“雀杰”段位，博士阶段预期在3月开始。在这两忙中难得的空闲时间，我打算开始动笔做2019年的年度总结，并对2020年做一点计划。  关键词 2019年算得上是非常不平淡的一年。如果挑几个词来总结，我觉得是挫败和成长。  挫败 挫败在我身上主要体现在两个方面，一个是情感上的，一个是学业上的。 19年开年就是一件对我受挫极大的事情，初恋因为异地提出分手并且在三个月内找到新男友">
-<meta property="og:type" content="website">
-<meta property="og:title" content="2019 年度总结">
-<meta property="og:url" content="https://moyutianque.github.io/annual_review/2019/index.html">
+  <meta name="description" content="This blog based on my note studying Lecture 7 of MIT course “Missing Semester of your CS”. Which is about the debugging strategies.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些常用的debug技巧">
+<meta property="og:url" content="https://moyutianque.github.io/2020/03/06/Computer_Science/Programming_Skill/3_debug/index.html">
 <meta property="og:site_name" content="Zeke96&#39;s Blog">
-<meta property="og:description" content="鉴于我终于在《雀魂》中进入“雀杰”段位，博士阶段预期在3月开始。在这两忙中难得的空闲时间，我打算开始动笔做2019年的年度总结，并对2020年做一点计划。  关键词 2019年算得上是非常不平淡的一年。如果挑几个词来总结，我觉得是挫败和成长。  挫败 挫败在我身上主要体现在两个方面，一个是情感上的，一个是学业上的。 19年开年就是一件对我受挫极大的事情，初恋因为异地提出分手并且在三个月内找到新男友">
+<meta property="og:description" content="This blog based on my note studying Lecture 7 of MIT course “Missing Semester of your CS”. Which is about the debugging strategies.">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-02-29T21:50:00.000Z">
-<meta property="article:modified_time" content="2020-02-29T21:50:00.000Z">
+<meta property="article:published_time" content="2020-03-06T21:02:39.655Z">
+<meta property="article:modified_time" content="2020-03-06T21:53:00.650Z">
 <meta property="article:author" content="zeke96">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://moyutianque.github.io/annual_review/2019/">
+<link rel="canonical" href="https://moyutianque.github.io/2020/03/06/Computer_Science/Programming_Skill/3_debug/">
 
 
 <script id="page-configurations">
@@ -68,11 +68,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>2019 年度总结 | Zeke96's Blog</title>
+  <title>一些常用的debug技巧 | Zeke96's Blog</title>
   
 
 
@@ -212,41 +212,6 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-
-      
-
-        
-        <ul id="sub-menu" class="sub-menu menu">
-          
-            
-          
-          
-            
-                
-  <li class="menu-item menu-item-2019年">
-
-    <a href="/annual_review/2019/" rel="section"><i class="fa fa-fw fa-bookmark"></i>2019年</a>
-
-  </li>
-
-
-        </ul>
-        
-
-        
-
-                
-
-                    
-                    <ul id="sub-menu-2" class="sub-menu menu">
-                      
-                    </ul>
-                    
-                
-        
-      
-  
 
           <div class="content">
             
@@ -256,7 +221,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://moyutianque.github.io/annual_review/2019/index.html">
+    <link itemprop="mainEntityOfPage" href="https://moyutianque.github.io/2020/03/06/Computer_Science/Programming_Skill/3_debug/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar1.png">
@@ -269,7 +234,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          2019 年度总结<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL21veXV0aWFucXVlL3pla2VCbG9nL2VkaXQvbWFzdGVyL3NvdXJjZS9hbm51YWxfcmV2aWV3LzIwMTkvaW5kZXgubWQ=" title="编辑"><i class="fa fa-pencil"></i></span>
+          一些常用的debug技巧<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL21veXV0aWFucXVlL3pla2VCbG9nL2VkaXQvbWFzdGVyL3NvdXJjZS9fcG9zdHMvQ29tcHV0ZXJfU2NpZW5jZS9Qcm9ncmFtbWluZ19Ta2lsbC8zX2RlYnVnLm1k" title="编辑"><i class="fa fa-pencil"></i></span>
         </h2>
 
         <div class="post-meta">
@@ -278,8 +243,26 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-02-29 22:50:00" itemprop="dateCreated datePublished" datetime="2020-02-29T22:50:00+01:00">2020-02-29</time>
+              <time title="创建时间：2020-03-06 22:02:39 / 修改时间：22:53:00" itemprop="dateCreated datePublished" datetime="2020-03-06T22:02:39+01:00">2020-03-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Science</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Programming-Skill/" itemprop="url" rel="index">
+                    <span itemprop="name">Programming Skill</span>
+                  </a>
+                </span>
             </span>
 
           
@@ -293,17 +276,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>鉴于我终于在《雀魂》中进入“雀杰”段位，博士阶段预期在3月开始。在这两忙中难得的空闲时间，我打算开始动笔做2019年的年度总结，并对2020年做一点计划。</p>
-<h3 id="关键词"><a class="markdownIt-Anchor" href="#关键词"></a> 关键词</h3>
-<p>2019年算得上是非常不平淡的一年。如果挑几个词来总结，我觉得是挫败和成长。</p>
-<h4 id="挫败"><a class="markdownIt-Anchor" href="#挫败"></a> 挫败</h4>
-<p>挫败在我身上主要体现在两个方面，一个是情感上的，一个是学业上的。</p>
-<p>19年开年就是一件对我受挫极大的事情，初恋因为异地提出分手并且在三个月内找到新男友。这可能是第一次让我意识到，原来人与人的情感还是挺脆弱的，即使有两年还不错的相处，依然可以在短时间内完全放下，另觅新欢。一个是一月的考试月我接到分手的通知，一个是五月的考试月我得知她已经带现任见家长，对于尚在紧张复习，为了读博拼命学习的我来说，是两次暴击。虽然三月份我寄去了曾经承诺她的丁丁历险记手办，本想时隔一个月报复性撩拨一下，然而貌似我自作多情了，放了个空枪。看来我还是不太擅长把握人的感情，或许是我高估了自己的位置。正巧我刚重看完《你的名字》，上一次看是在脱单前，这一次看是重回单身后，两年多的时间，我又成为了当年的我，不仅是情感状态，连体重都是。不一样的是，我更强了，开始了日语学习，算法学习以及有了一次投稿的经历。我会学着体谅他人，期待遇到更好的女生。</p>
-<p>学业上的挫败主要来源于年底的博士申请。我本身期待的是能回到华人圈的高校读博，比如香港和新加坡。然而两件事情使这成为了不可能，其一是香港在年底突然暴乱反华，即使申上也基本不会考虑，我套磁的时间又刚好碰到大学紧急状态，实验室陆续撤离香港，所以邮件很晚才被教授处理，失去了尝试更多学校的机会。其二就是计算机博士申请的很多因素我是后来才知道，除了硬实力不足以外，还有套磁时间的选择以及各种准备不够充分。总之回港校的计划彻底失败了。最终在花了一个多月的时间与Tinne套磁，我在年底的时候终于初步拿到了鲁汶的博士项目，鲁汶再一次拯救了我的申请，感动ing。这件事情一个是重新定位了我现在的实力，让我了解了现在计算机博士申请的残酷，另一个就是让我意识到了我过于薄弱的信息整理能力。</p>
-<h4 id="成长"><a class="markdownIt-Anchor" href="#成长"></a> 成长</h4>
-<p>在鲁汶读书的这一年半时间，我不仅在逐渐精通自己的学业，做了几个比较满意的小项目，而且从暑假开始坚持健身，现在不仅赘肉逐渐在消失，肩膀也开始不那么单薄。我对自己还是很满意的。科研上，我依旧保持着很大的热情，每当看到自己曾经做过的项目，都能从中看到曾经那个热血严苛充满创造力的自己。</p>
-<h3 id="2020展望"><a class="markdownIt-Anchor" href="#2020展望"></a> 2020展望</h3>
-<p>2020开年非常的不平静，从毕业休假因为新冠状病毒肺炎而取消，以及世界哪儿都在产生新的不稳定因素，这一年可能会是非常难的一年。如果冠状病毒最终引起大规模爆发，导致奥运等等受到影响，大规模排华不是不可能发生，即使最终能证明是美国先产生的病毒，最终结果也不会有很大不同。对于我自己而言，首要就是期望能投一篇顶会质量的文章，日语学习持续跟进，争取2021年中能参加N2级别考试，另外希望英语也能达到CPE级别。日麻若能达到“雀豪”，我一定会把图挂在2020年度总结的开篇，頑張ります！(づ｡◕ᴗᴗ◕｡)づ</p>
+        <p>This blog based on my note studying Lecture 7 of MIT course “Missing Semester of your CS”. Which is about the debugging strategies.</p>
+<a id="more"></a>
+<hr>
+<h2 id="log-记录程序运行问题"><a class="markdownIt-Anchor" href="#log-记录程序运行问题"></a> log 记录程序运行问题</h2>
+<p>首先，Unix系统下会有个 <code>/var/log</code> 文件夹，存放系统相关的 log，比如 <code>system.log</code>，可以通过以下指令查看该文件的内容，<code>--last</code> 查看多久范围的 <code>system.log</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">log</span> show --last 10s</span><br></pre></td></tr></table></figure>
+<h2 id="profile"><a class="markdownIt-Anchor" href="#profile"></a> profile</h2>
+<p>profile 用于记录不同代码段的运行时间，调用次数等信息，两个工具可以做到这一点。这一节主要以 python 程序为例。</p>
+<h3 id="cprofile"><a class="markdownIt-Anchor" href="#cprofile"></a> cProfile</h3>
+<p>第一个用 python 本身带的模式 <code>cProfile</code>，可以在命令中加入，其中 <code>tac</code> 用于反向输出，更符合阅读习惯。向下滚动命令行会看到占用时间越来越多的代码段。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m cProfile -s tottime example.py | tac</span><br></pre></td></tr></table></figure>
+<h3 id="line-profiler"><a class="markdownIt-Anchor" href="#line-profiler"></a> line profiler</h3>
+<p>另一个比较好的软件是 <mark><strong>line_profiler</strong></mark> 可以显示代码每行所占用的运行时间比例。只需要在想要 profile 的子函数前加 <code>@profile</code> 即可。</p>
+<p>我们可以通过 pip 安装 profiler</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install line_profiler</span><br></pre></td></tr></table></figure>
+<p>在代码中加入 <code>@profile</code> 后，通过以下指令运行 python 程序</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kernprof -l -v example.py</span><br></pre></td></tr></table></figure>
+<p>通过以下代码还可以查看代码的 memory 使用情况</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m memory_profiler example.py</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -317,6 +308,13 @@
 
 
         
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/05/Computer_Science/Programming_Skill/0_Shell/" rel="prev" title="Shell 的使用">
+      <i class="fa fa-chevron-left"></i> Shell 的使用
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
     
   </article>
@@ -375,7 +373,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词"><span class="nav-number">1.</span> <span class="nav-text"> 关键词</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#挫败"><span class="nav-number">1.1.</span> <span class="nav-text"> 挫败</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#成长"><span class="nav-number">1.2.</span> <span class="nav-text"> 成长</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2020展望"><span class="nav-number">2.</span> <span class="nav-text"> 2020展望</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#log-记录程序运行问题"><span class="nav-number">1.</span> <span class="nav-text"> log 记录程序运行问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#profile"><span class="nav-number">2.</span> <span class="nav-text"> profile</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cprofile"><span class="nav-number">2.1.</span> <span class="nav-text"> cProfile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#line-profiler"><span class="nav-number">2.2.</span> <span class="nav-text"> line profiler</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
