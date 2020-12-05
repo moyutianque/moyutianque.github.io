@@ -48,19 +48,19 @@
   };
 </script>
 
-  <meta name="description" content="学计算机的日麻爱好者">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Categories">
-<meta property="og:url" content="https://moyutianque.github.io/categories/index.html">
+  <meta name="description" content="本文主要针对hexo博客框架的基础预览和部署流程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo框架调试步骤简介">
+<meta property="og:url" content="https://moyutianque.github.io/2020/12/05/Computer_Science/Programming_Skill/4_hexo/index.html">
 <meta property="og:site_name" content="Zeke96&#39;s Blog">
-<meta property="og:description" content="学计算机的日麻爱好者">
+<meta property="og:description" content="本文主要针对hexo博客框架的基础预览和部署流程">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-02-22T23:42:13.846Z">
-<meta property="article:modified_time" content="2020-02-22T23:34:17.278Z">
+<meta property="article:published_time" content="2020-12-05T09:24:41.530Z">
+<meta property="article:modified_time" content="2020-12-05T10:02:37.184Z">
 <meta property="article:author" content="zeke96">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://moyutianque.github.io/categories/">
+<link rel="canonical" href="https://moyutianque.github.io/2020/12/05/Computer_Science/Programming_Skill/4_hexo/">
 
 
 <script id="page-configurations">
@@ -68,12 +68,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>Categories | Zeke96's Blog
-  </title>
+  <title>Hexo框架调试步骤简介 | Zeke96's Blog</title>
   
 
 
@@ -213,55 +212,131 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-
-      
-      
-  
 
           <div class="content">
             
 
   <div class="posts-expand">
-    
-    
-    
-    <div class="post-block" lang="zh-CN">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://moyutianque.github.io/2020/12/05/Computer_Science/Programming_Skill/4_hexo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar1.png">
+      <meta itemprop="name" content="zeke96">
+      <meta itemprop="description" content="学计算机的日麻爱好者">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zeke96's Blog">
+    </span>
       <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Hexo框架调试步骤简介<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL21veXV0aWFucXVlL3pla2VCbG9nL2VkaXQvbWFzdGVyL3NvdXJjZS9fcG9zdHMvQ29tcHV0ZXJfU2NpZW5jZS9Qcm9ncmFtbWluZ19Ta2lsbC80X2hleG8ubWQ=" title="编辑"><i class="fa fa-pencil"></i></span>
+        </h2>
 
-<h2 class="post-title" itemprop="name headline">Categories<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL21veXV0aWFucXVlL3pla2VCbG9nL2VkaXQvbWFzdGVyL3NvdXJjZS9jYXRlZ29yaWVzL2luZGV4Lm1k" title="编辑"><i class="fa fa-pencil"></i></span>
-</h2>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
-<div class="post-meta">
+              <time title="创建时间：2020-12-05 10:24:41 / 修改时间：11:02:37" itemprop="dateCreated datePublished" datetime="2020-12-05T10:24:41+01:00">2020-12-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Science</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/Programming-Skill/" itemprop="url" rel="index">
+                    <span itemprop="name">Programming Skill</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文主要针对hexo博客框架的基础预览和部署流程</p>
+<a id="more"></a>
+<hr>
+<h3 id="指令hexo后命令缩写"><a class="markdownIt-Anchor" href="#指令hexo后命令缩写"></a> 指令<code>hexo</code>后命令缩写</h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clean</td>
+<td style="text-align:center">clean cache files</td>
+</tr>
+<tr>
+<td>generate, g</td>
+<td style="text-align:center">generate code</td>
+</tr>
+<tr>
+<td>deploy, d</td>
+<td style="text-align:center">deploy generated code</td>
+</tr>
+</tbody>
+</table>
+<p>更多请参考 <a href="'https://hexo.io/docs/commands.html'">官方文档</a></p>
+<h3 id="调试"><a class="markdownIt-Anchor" href="#调试"></a> 调试</h3>
+<p>保存更改后，以下指令清缓存生成网页文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<p>启动local server默认在<code>http://localhost:4000/</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br><span class="line">或</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>一般来说启动local server后再更改文件依旧会生效，如果未生效（比如更改了主要的<code>_config.yml</code>），请手动重新走一遍流程。</p>
+<h3 id="部署"><a class="markdownIt-Anchor" href="#部署"></a> 部署</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/06/Computer_Science/Programming_Skill/3_debug/" rel="prev" title="一些常用的debug技巧">
+      <i class="fa fa-chevron-left"></i> 一些常用的debug技巧
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <div class="category-all-page">
-            <div class="category-all-title">
-              目前共计 5 个分类
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Science/">Computer Science</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Science/General-Settings/">General Settings</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Science/Programming-Skill/">Programming Skill</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Film-Review/">Film Review</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Film-Review/Legal-High/">Legal High</a><span class="category-list-count">1</span></li></ul></li></ul>
-            </div>
-          </div>
-        
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
   </div>
 
 
@@ -313,6 +388,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#指令hexo后命令缩写"><span class="nav-number">1.</span> <span class="nav-text"> 指令hexo后命令缩写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调试"><span class="nav-number">2.</span> <span class="nav-text"> 调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署"><span class="nav-number">3.</span> <span class="nav-text"> 部署</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -440,6 +516,9 @@
   
 
   
+      
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css">
+
 
   
 

@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo框架调试步骤简介</title>
+    <url>/2020/12/05/Computer_Science/Programming_Skill/4_hexo/</url>
+    <content><![CDATA[<p>本文主要针对hexo博客框架的基础预览和部署流程</p>
+<a id="more"></a>
+<hr>
+<h3 id="指令hexo后命令缩写"><a class="markdownIt-Anchor" href="#指令hexo后命令缩写"></a> 指令<code>hexo</code>后命令缩写</h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clean</td>
+<td style="text-align:center">clean cache files</td>
+</tr>
+<tr>
+<td>generate, g</td>
+<td style="text-align:center">generate code</td>
+</tr>
+<tr>
+<td>deploy, d</td>
+<td style="text-align:center">deploy generated code</td>
+</tr>
+</tbody>
+</table>
+<p>更多请参考 <a href="'https://hexo.io/docs/commands.html'">官方文档</a></p>
+<h3 id="调试"><a class="markdownIt-Anchor" href="#调试"></a> 调试</h3>
+<p>保存更改后，以下指令清缓存生成网页文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<p>启动local server默认在<code>http://localhost:4000/</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br><span class="line">或</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>一般来说启动local server后再更改文件依旧会生效，如果未生效（比如更改了主要的<code>_config.yml</code>），请手动重新走一遍流程。</p>
+<h3 id="部署"><a class="markdownIt-Anchor" href="#部署"></a> 部署</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Computer Science</category>
+        <category>Programming Skill</category>
+      </categories>
+  </entry>
+  <entry>
     <title>一些常用的debug技巧</title>
     <url>/2020/03/06/Computer_Science/Programming_Skill/3_debug/</url>
     <content><![CDATA[<p>This blog based on my note studying Lecture 7 of MIT course “Missing Semester of your CS”. Which is about the debugging strategies.</p>
