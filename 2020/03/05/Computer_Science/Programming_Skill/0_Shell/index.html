@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -163,12 +163,12 @@
       
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">5</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">6</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">8</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">10</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -319,7 +319,7 @@ e.g. <code>chmod -R -w foldername</code> 其中 <code>-R</code> 等价于 <code>
 <code>find ./project -path '**/test/*.py' -type f</code> <br><br />
 用于查找project目录下的所有文件夹下test下的py文件<br></li>
 <li>可以在查找结果中通过 <code>-exec</code> 属性直接对找到的文件操作，例如<br />
-<code>find ./project -name &quot;*.tmp&quot; -exec rm {} \;</code> <br><br />
+<code>find ./project -name &quot;*.tmp&quot; -exec rm &#123;&#125; \;</code> <br><br />
 删除所有tmp文件，其中;指的结束rm这一条指令，相当于回车符</li>
 </ol>
 <p><code>rg string -t py -C 5 dir</code> — 在dir下所有py结尾的文件夹中查找string并返回其5行的context内容  （rg 为加强版的grep全称为ripgrep）<br></p>
@@ -328,7 +328,7 @@ e.g. <code>chmod -R -w foldername</code> 其中 <code>-R</code> 等价于 <code>
 <ul>
 <li>比如要创建test1 test2 test3三个文件<br />
 则利用shell自带的拓展语法{ , , , }即可<br />
-<code>touch test{1,2,3}</code></li>
+<code>touch test&#123;1,2,3&#125;</code></li>
 </ul>
 <h3 id="关于一些program的基本shell端指令"><a class="markdownIt-Anchor" href="#关于一些program的基本shell端指令"></a> 关于一些program的基本shell端指令</h3>
 <p><code>man app</code> — show the program menu 一般即是 --help 的内容 <br><br />
@@ -361,7 +361,7 @@ python文件也可以通过解释器声明以直接运行，而不用在命令�
 <h3 id="样例程序"><a class="markdownIt-Anchor" href="#样例程序"></a> 样例程序</h3>
 <p>example code 写在 <code>example.sh</code> 下<br />
 该程序用于在多个文件中找foobar这个词，如果没有就添加</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Starting program at <span class="variable">$(date)</span>"</span> <span class="comment"># Date will be substituted</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Running program <span class="variable">$0</span> with <span class="variable">$#</span> arguments with pid $$"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历$1到$n每个文件</span></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> <span class="variable">$@</span>; <span class="keyword">do</span></span><br><span class="line">    grep foobar <span class="variable">$file</span> &gt; /dev/null 2&gt; /dev/null <span class="comment"># grep is used for search a word in file</span></span><br><span class="line">    <span class="comment"># When pattern is not found, grep has exit status 1</span></span><br><span class="line">    <span class="comment"># We redirect STDOUT and STDERR to a null register since we do not care about them</span></span><br><span class="line"></span><br><span class="line">   <span class="comment"># -ne 'means not equal to'</span></span><br><span class="line">    <span class="keyword">if</span> [[ $? -ne 0 ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"File <span class="variable">$file</span> does not have any foobar, adding one"</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"# foobar"</span> &gt;&gt; <span class="string">"<span class="variable">$file</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Starting program at <span class="subst">$(date)</span>&quot;</span> <span class="comment"># Date will be substituted</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Running program <span class="variable">$0</span> with <span class="variable">$#</span> arguments with pid $$&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历$1到$n每个文件</span></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> <span class="variable">$@</span>; <span class="keyword">do</span></span><br><span class="line">    grep foobar <span class="variable">$file</span> &gt; /dev/null 2&gt; /dev/null <span class="comment"># grep is used for search a word in file</span></span><br><span class="line">    <span class="comment"># When pattern is not found, grep has exit status 1</span></span><br><span class="line">    <span class="comment"># We redirect STDOUT and STDERR to a null register since we do not care about them</span></span><br><span class="line"></span><br><span class="line">   <span class="comment"># -ne &#x27;means not equal to&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> [[ $? -ne 0 ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;File <span class="variable">$file</span> does not have any foobar, adding one&quot;</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;# foobar&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$file</span>&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <p>示例运行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./example.sh hello.py a.sh b.txt</span><br></pre></td></tr></table></figure>
 <p>即在 <code>hello.py a.sh b.txt</code> 三个文件中查找foobar，如果没有就添加</p>
@@ -370,7 +370,7 @@ python文件也可以通过解释器声明以直接运行，而不用在命令�
 <p>可参考 <span class="exturl" data-url="aHR0cHM6Ly93d3cuaGFtdm9ja2UuY29tL2Jsb2cvYS1xdWljay1hbmQtZWFzeS1ndWlkZS10by10bXV4Lw==" title="https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/">tmux tutorial<i class="fa fa-external-link"></i></span></p>
 <h2 id="alias-用于定义一段command的简称"><a class="markdownIt-Anchor" href="#alias-用于定义一段command的简称"></a> alias 用于定义一段command的简称</h2>
 <p>在 <code>~/.bashrc</code> 中添加以下代码，则可输入 <code>gs</code> 以执行 <code>git status</code> 指令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> gs=<span class="string">"git status"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> gs=<span class="string">&quot;git status&quot;</span></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -452,7 +452,7 @@ python文件也可以通过解释器声明以直接运行，而不用在命令�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#shell-命令"><span class="nav-number">1.</span> <span class="nav-text"> Shell 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境变量"><span class="nav-number">1.1.</span> <span class="nav-text"> 环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#directory-有关命令"><span class="nav-number">1.2.</span> <span class="nav-text"> directory 有关命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cd-命令"><span class="nav-number">1.3.</span> <span class="nav-text"> cd 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ls-命令"><span class="nav-number">1.4.</span> <span class="nav-text"> ls 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件夹和文件的基本操作"><span class="nav-number">1.5.</span> <span class="nav-text"> 文件夹和文件的基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于一些program的基本shell端指令"><span class="nav-number">1.6.</span> <span class="nav-text"> 关于一些program的基本shell端指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shell-上的一些快捷操作"><span class="nav-number">1.7.</span> <span class="nav-text"> Shell 上的一些快捷操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-程序"><span class="nav-number">2.</span> <span class="nav-text"> Bash 程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件头声明"><span class="nav-number">2.1.</span> <span class="nav-text"> 文件头声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bash-程序变量"><span class="nav-number">2.2.</span> <span class="nav-text"> bash 程序变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样例程序"><span class="nav-number">2.3.</span> <span class="nav-text"> 样例程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tmux-终端复用软件"><span class="nav-number">3.</span> <span class="nav-text"> tmux 终端复用软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#alias-用于定义一段command的简称"><span class="nav-number">4.</span> <span class="nav-text"> alias 用于定义一段command的简称</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#shell-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text"> Shell 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.</span> <span class="nav-text"> 环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#directory-%E6%9C%89%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.</span> <span class="nav-text"> directory 有关命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cd-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.</span> <span class="nav-text"> cd 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ls-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.4.</span> <span class="nav-text"> ls 命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%A4%B9%E5%92%8C%E6%96%87%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">1.5.</span> <span class="nav-text"> 文件夹和文件的基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E4%B8%80%E4%BA%9Bprogram%E7%9A%84%E5%9F%BA%E6%9C%ACshell%E7%AB%AF%E6%8C%87%E4%BB%A4"><span class="nav-number">1.6.</span> <span class="nav-text"> 关于一些program的基本shell端指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shell-%E4%B8%8A%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BF%AB%E6%8D%B7%E6%93%8D%E4%BD%9C"><span class="nav-number">1.7.</span> <span class="nav-text"> Shell 上的一些快捷操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash-%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.</span> <span class="nav-text"> Bash 程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%A4%B4%E5%A3%B0%E6%98%8E"><span class="nav-number">2.1.</span> <span class="nav-text"> 文件头声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bash-%E7%A8%8B%E5%BA%8F%E5%8F%98%E9%87%8F"><span class="nav-number">2.2.</span> <span class="nav-text"> bash 程序变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B7%E4%BE%8B%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.3.</span> <span class="nav-text"> 样例程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tmux-%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8%E8%BD%AF%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text"> tmux 终端复用软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#alias-%E7%94%A8%E4%BA%8E%E5%AE%9A%E4%B9%89%E4%B8%80%E6%AE%B5command%E7%9A%84%E7%AE%80%E7%A7%B0"><span class="nav-number">4.</span> <span class="nav-text"> alias 用于定义一段command的简称</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -468,14 +468,14 @@ python文件也可以通过解释器声明以直接运行，而不用在命令�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
@@ -518,12 +518,12 @@ python文件也可以通过解释器声明以直接运行，而不用在命令�
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">11k</span>
+    <span title="站点总字数">12k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">10 分钟</span>
+    <span title="站点阅读时长">11 分钟</span>
 </div>
 
         

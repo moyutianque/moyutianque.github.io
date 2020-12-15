@@ -1,6 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Windows10 下 subsystem 安装</title>
+    <url>/2020/12/10/Computer_Science/Settings/3_subsystem/</url>
+    <content><![CDATA[<p>往往常规安装 Linux subsystem 的时候会默认安装在 C 盘中且无法变更。下文为一个工具推荐，使 subsystem 可以装在指定位置。</p>
+<a id="more"></a>
+<ol>
+<li>
+<p>安装Chocolatey</p>
+</li>
+<li>
+<p><code>choco install lxrunoffline</code></p>
+</li>
+<li>
+<p>下载wsl镜像 the *.tar.gz image from: <span class="exturl" data-url="aHR0cHM6Ly9seHJ1bm9mZmxpbmUuYXBwaGIuY29tL2Rvd25sb2FkL1VidW50dUZyb21NUy8xNg==" title="https://lxrunoffline.apphb.com/download/UbuntuFromMS/16">https://lxrunoffline.apphb.com/download/UbuntuFromMS/16<i class="fa fa-external-link"></i></span></p>
+</li>
+<li>
+<p>安装镜像e:\UbuntuSubsys\16.04.2-server-cloudimg-amd64-root.tar.gz 到 e:\UbuntuSubsys\Ubuntu16 命名为 Ub16</p>
+</li>
+</ol>
+<p><code>LxRunOffline i -n Ub16 -d e:\UbuntuSubsys\Ubuntu16 -f E:\UbuntuSubsys\16.04.2-server-cloudimg-amd64-root.tar.gz -s</code></p>
+<ol start="5">
+<li>
+<p>启动环境：<br />
+<code>wsl</code> 或 <code>LxRunOffline r -n Ub16</code></p>
+</li>
+<li>
+<p>转为wsl2 版本 <span class="exturl" data-url="aHR0cHM6Ly9zZWdtZW50ZmF1bHQuY29tL2EvMTE5MDAwMDAyMjc5MjI2Nw==" title="https://segmentfault.com/a/1190000022792267">教程<i class="fa fa-external-link"></i></span></p>
+</li>
+<li>
+<p>xserver<br />
+[教程】(<span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvNDMzOTcxNjIvc2hvdy1tYXRwbG90bGliLXBsb3RzLWFuZC1vdGhlci1ndWktaW4tdWJ1bnR1LXdzbDEtd3NsMg==" title="https://stackoverflow.com/questions/43397162/show-matplotlib-plots-and-other-gui-in-ubuntu-wsl1-wsl2">https://stackoverflow.com/questions/43397162/show-matplotlib-plots-and-other-gui-in-ubuntu-wsl1-wsl2<i class="fa fa-external-link"></i></span>)</p>
+</li>
+</ol>
+<p>UB16 的包冲突问题 UB18 没此问题，UB16 <span class="exturl" data-url="aHR0cHM6Ly9hc2t1YnVudHUuY29tL3F1ZXN0aW9ucy84MzQyNTQvc3RlYW0tbGliZ2wtZXJyb3Itbm8tbWF0Y2hpbmctZmJjb25maWdzLW9yLXZpc3VhbHMtZm91bmQtbGliZ2wtZXJyb3ItZmFpbGVkLXQ=" title="https://askubuntu.com/questions/834254/steam-libgl-error-no-matching-fbconfigs-or-visuals-found-libgl-error-failed-t">解法<i class="fa fa-external-link"></i></span></p>
+<ol start="8">
+<li>如果要升级到 Ubuntu 18 参考<span class="exturl" data-url="aHR0cHM6Ly93d3cuY3liZXJjaXRpLmJpei9mYXEvaG93LXRvLXVwZ3JhZGUtdWJ1bnR1LTE2LTA0LXRvLTE4LTA0LWx0cy11c2luZy10ZXJtaW5hbC8=" title="https://www.cyberciti.biz/faq/how-to-upgrade-ubuntu-16-04-to-18-04-lts-using-terminal/">教程<i class="fa fa-external-link"></i></span></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Computer Science</category>
+        <category>Settings</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Docker的部署及使用</title>
+    <url>/2020/12/05/Computer_Science/Settings/2_docker/</url>
+    <content><![CDATA[<p>Docker 的设计初衷是封装除内核外应用相关的完整的运行时环境，以便开发过程中保持环境一致性问题。对于进程封装隔离，在操作系统层面虚拟化。由于隔离的进程独立于宿主和其它的隔离的进程，因此也称其为容器。Docker 在容器的基础上，进行了进一步的封装，从文件系统、网络互联到进程隔离等等，极大的简化了容器的创建和维护。使得 Docker 技术比虚拟机技术更为轻便、快捷。</p>
+<a id="more"></a>
+<p>以下内容参考并精简自 <span class="exturl" data-url="aHR0cHM6Ly92dWVwcmVzcy5taXJyb3IuZG9ja2VyLXByYWN0aWNlLmNvbS8=" title="https://vuepress.mirror.docker-practice.com/">Docker — 从入门到实践<i class="fa fa-external-link"></i></span></p>
+<h3 id="docker-与虚拟机的区别"><a class="markdownIt-Anchor" href="#docker-与虚拟机的区别"></a> Docker 与虚拟机的区别</h3>
+<ul>
+<li>虚拟机技术是虚拟出来一套硬件，并运行一套完整的操作系统</li>
+<li>Docker 容器内的应用直接运行于宿主内核，不虚拟硬件，对系统资源利用率更高，其中 <code>Dockerfile</code> 提供镜像构建详细信息，利于运维团队理解运行所需具体环境。</li>
+</ul>
+<h3 id="docker-的基本概念"><a class="markdownIt-Anchor" href="#docker-的基本概念"></a> Docker 的基本概念</h3>
+<ul>
+<li>镜像（<code>Image</code>）：虚拟化的多层文件系统，且为层层创建，任何对前一层的删除只是标记删除，而非实际删除，故创建每层时尽量只保留需要的文件。</li>
+<li>容器（<code>Container</code>）：相当于镜像所创建的实例，为镜像运行时的实体。运行时是进程，但与宿主进程是不同的命名空间(Namespace - Linux 系统对于系统资源进行隔离和虚拟化的特性)。注意：提倡不在容器存储层读写数据，容器只保留运行相关内容，而是使用数据卷 (Volume) 或者绑定宿主目录，以直接在宿主上进行读写，否则容器消失时容器存储也会消失，导致数据丢失。</li>
+<li>仓库（<code>Repository</code>）：在 Docker Registry 下存储镜像的实体，其中可包含多个版本镜像，以不同 tag 标记 (<code>&lt;仓库名&gt;:&lt;标签&gt;</code>)。</li>
+</ul>
+<h3 id="docker-本地使用"><a class="markdownIt-Anchor" href="#docker-本地使用"></a> Docker 本地使用</h3>
+<h4 id="1-windows-10-下"><a class="markdownIt-Anchor" href="#1-windows-10-下"></a> 1. Windows 10 下</h4>
+<ul>
+<li>依据 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm52aWRpYS5jb20vY3VkYS93c2wtdXNlci1ndWlkZS9pbmRleC5odG1s" title="https://docs.nvidia.com/cuda/wsl-user-guide/index.html">教程<i class="fa fa-external-link"></i></span> 安装 cuda toolkits (注意：看清 Windows 系统具体版本要求，看清各个指令中关于 ubuntu 和 cuda 的版本号，明确注明了不用Docker desktop，直接在 WSL2 中按照教程安装)</li>
+<li>依据 <span class="exturl" data-url="aHR0cHM6Ly9zZWdtZW50ZmF1bHQuY29tL2EvMTE5MDAwMDAyMjc5MjI2Nw==" title="https://segmentfault.com/a/1190000022792267">教程<i class="fa fa-external-link"></i></span> 安装 Windows10 下 Linux 子系统服务 WSL2 并激活</li>
+</ul>
+<p>Gibson</p>
+<ol>
+<li>在 wsl2 上安装 xhost</li>
+</ol>
+<blockquote>
+<p>apt install x11-xserver-utils</p>
+</blockquote>
+<ol start="2">
+<li></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Computer Science</category>
+        <category>Settings</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Hexo框架调试步骤简介</title>
     <url>/2020/12/05/Computer_Science/Programming_Skill/4_hexo/</url>
     <content><![CDATA[<p>本文主要针对hexo博客框架的基础预览和部署流程</p>
@@ -111,7 +193,7 @@ e.g. <code>chmod -R -w foldername</code> 其中 <code>-R</code> 等价于 <code>
 <code>find ./project -path '**/test/*.py' -type f</code> <br><br />
 用于查找project目录下的所有文件夹下test下的py文件<br></li>
 <li>可以在查找结果中通过 <code>-exec</code> 属性直接对找到的文件操作，例如<br />
-<code>find ./project -name &quot;*.tmp&quot; -exec rm {} \;</code> <br><br />
+<code>find ./project -name &quot;*.tmp&quot; -exec rm &#123;&#125; \;</code> <br><br />
 删除所有tmp文件，其中;指的结束rm这一条指令，相当于回车符</li>
 </ol>
 <p><code>rg string -t py -C 5 dir</code> — 在dir下所有py结尾的文件夹中查找string并返回其5行的context内容  （rg 为加强版的grep全称为ripgrep）<br></p>
@@ -120,7 +202,7 @@ e.g. <code>chmod -R -w foldername</code> 其中 <code>-R</code> 等价于 <code>
 <ul>
 <li>比如要创建test1 test2 test3三个文件<br />
 则利用shell自带的拓展语法{ , , , }即可<br />
-<code>touch test{1,2,3}</code></li>
+<code>touch test&#123;1,2,3&#125;</code></li>
 </ul>
 <h3 id="关于一些program的基本shell端指令"><a class="markdownIt-Anchor" href="#关于一些program的基本shell端指令"></a> 关于一些program的基本shell端指令</h3>
 <p><code>man app</code> — show the program menu 一般即是 --help 的内容 <br><br />
@@ -153,7 +235,7 @@ python文件也可以通过解释器声明以直接运行，而不用在命令�
 <h3 id="样例程序"><a class="markdownIt-Anchor" href="#样例程序"></a> 样例程序</h3>
 <p>example code 写在 <code>example.sh</code> 下<br />
 该程序用于在多个文件中找foobar这个词，如果没有就添加</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Starting program at <span class="variable">$(date)</span>"</span> <span class="comment"># Date will be substituted</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Running program <span class="variable">$0</span> with <span class="variable">$#</span> arguments with pid $$"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历$1到$n每个文件</span></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> <span class="variable">$@</span>; <span class="keyword">do</span></span><br><span class="line">    grep foobar <span class="variable">$file</span> &gt; /dev/null 2&gt; /dev/null <span class="comment"># grep is used for search a word in file</span></span><br><span class="line">    <span class="comment"># When pattern is not found, grep has exit status 1</span></span><br><span class="line">    <span class="comment"># We redirect STDOUT and STDERR to a null register since we do not care about them</span></span><br><span class="line"></span><br><span class="line">   <span class="comment"># -ne 'means not equal to'</span></span><br><span class="line">    <span class="keyword">if</span> [[ $? -ne 0 ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"File <span class="variable">$file</span> does not have any foobar, adding one"</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"# foobar"</span> &gt;&gt; <span class="string">"<span class="variable">$file</span>"</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Starting program at <span class="subst">$(date)</span>&quot;</span> <span class="comment"># Date will be substituted</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Running program <span class="variable">$0</span> with <span class="variable">$#</span> arguments with pid $$&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历$1到$n每个文件</span></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> <span class="variable">$@</span>; <span class="keyword">do</span></span><br><span class="line">    grep foobar <span class="variable">$file</span> &gt; /dev/null 2&gt; /dev/null <span class="comment"># grep is used for search a word in file</span></span><br><span class="line">    <span class="comment"># When pattern is not found, grep has exit status 1</span></span><br><span class="line">    <span class="comment"># We redirect STDOUT and STDERR to a null register since we do not care about them</span></span><br><span class="line"></span><br><span class="line">   <span class="comment"># -ne &#x27;means not equal to&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> [[ $? -ne 0 ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;File <span class="variable">$file</span> does not have any foobar, adding one&quot;</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;# foobar&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$file</span>&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <p>示例运行</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./example.sh hello.py a.sh b.txt</span><br></pre></td></tr></table></figure>
 <p>即在 <code>hello.py a.sh b.txt</code> 三个文件中查找foobar，如果没有就添加</p>
@@ -162,7 +244,7 @@ python文件也可以通过解释器声明以直接运行，而不用在命令�
 <p>可参考 <span class="exturl" data-url="aHR0cHM6Ly93d3cuaGFtdm9ja2UuY29tL2Jsb2cvYS1xdWljay1hbmQtZWFzeS1ndWlkZS10by10bXV4Lw==" title="https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/">tmux tutorial<i class="fa fa-external-link"></i></span></p>
 <h2 id="alias-用于定义一段command的简称"><a class="markdownIt-Anchor" href="#alias-用于定义一段command的简称"></a> alias 用于定义一段command的简称</h2>
 <p>在 <code>~/.bashrc</code> 中添加以下代码，则可输入 <code>gs</code> 以执行 <code>git status</code> 指令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> gs=<span class="string">"git status"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> gs=<span class="string">&quot;git status&quot;</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Computer Science</category>
@@ -310,7 +392,7 @@ python文件也可以通过解释器声明以直接运行，而不用在命令�
 2. 计算代码块的运行时间</p>
 <p><strong>Linux系统：</strong> 在g++指令中只需要加 <code>-DLOCAL_RUN</code> 作为预处理器指令即可。</p>
 <p><strong>Windows系统：</strong> 在<strong>Visual Studio</strong>中找到项目属性，选择Preprocessor，在Preprocessor Definition里点击Edit，添加 <code>LOCAL_RUN</code> 即可。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;chrono&gt; // for time spend</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt; // redirect input/output file</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"><span class="keyword">using</span> ld = <span class="keyword">long</span> <span class="keyword">double</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> ll LINF = (ll)<span class="number">2e18</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL_RUN</span></span><br><span class="line">    freopen(<span class="string">"test.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"test.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">  <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    </span><br><span class="line">  <span class="keyword">auto</span> start = chrono::high_resolution_clock::now();</span><br><span class="line">  <span class="built_in">run</span>();</span><br><span class="line">  <span class="keyword">auto</span> <span class="built_in">end</span> = chrono::high_resolution_clock::now();</span><br><span class="line">	</span><br><span class="line">  <span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL_RUN</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Execution time: "</span></span><br><span class="line">      &lt;&lt; chrono::duration_cast&lt;chrono::milliseconds&gt;(<span class="built_in">end</span> - start).count()</span><br><span class="line">      &lt;&lt; <span class="string">" ms"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;chrono&gt; // for time spend</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt; // redirect input/output file</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"><span class="keyword">using</span> ld = <span class="keyword">long</span> <span class="keyword">double</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> ll LINF = (ll)<span class="number">2e18</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL_RUN</span></span><br><span class="line">    freopen(<span class="string">&quot;test.in&quot;</span>,<span class="string">&quot;r&quot;</span>,<span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">&quot;test.out&quot;</span>,<span class="string">&quot;w&quot;</span>,<span class="built_in">stdout</span>);</span><br><span class="line">  <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    </span><br><span class="line">  <span class="keyword">auto</span> start = chrono::high_resolution_clock::now();</span><br><span class="line">  run();</span><br><span class="line">  <span class="keyword">auto</span> end = chrono::high_resolution_clock::now();</span><br><span class="line">	</span><br><span class="line">  <span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL_RUN</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Execution time: &quot;</span></span><br><span class="line">      &lt;&lt; chrono::duration_cast&lt;chrono::milliseconds&gt;(end - start).count()</span><br><span class="line">      &lt;&lt; <span class="string">&quot; ms&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="visual-studio-必要初始设置"><a class="markdownIt-Anchor" href="#visual-studio-必要初始设置"></a> Visual Studio 必要初始设置</h2>
 <ol>
 <li>创建empty C++ project</li>
@@ -336,7 +418,7 @@ python文件也可以通过解释器声明以直接运行，而不用在命令�
     <content><![CDATA[<h3 id="配置vim编辑器"><a class="markdownIt-Anchor" href="#配置vim编辑器"></a> 配置Vim编辑器</h3>
 <p>在<code>.vimrc</code>文件中写入以下配置信息：</p>
 <a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">syntax on          <span class="string">" open syntax color for languages</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">set tabstop=2      "</span> The width of a TAB is <span class="built_in">set</span> to 2</span><br><span class="line"><span class="built_in">set</span> shiftwidth=2   <span class="string">" Indents will have a width of 2</span></span><br><span class="line"><span class="string">set expandtab      "</span> Expand TABs to spaces</span><br><span class="line"><span class="built_in">set</span> smartindent</span><br><span class="line"></span><br><span class="line"><span class="string">"backspace to delete one level of indent</span></span><br><span class="line"><span class="string">set backspace=indent,eol,start </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">set number         "</span> open line number</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> hlsearch       <span class="string">" open highlight pattern</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">colorscheme molokai</span></span><br><span class="line"><span class="string">"</span>colorscheme solarized</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">syntax on          <span class="string">&quot; open syntax color for languages</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">set tabstop=2      &quot;</span> The width of a TAB is <span class="built_in">set</span> to 2</span><br><span class="line"><span class="built_in">set</span> shiftwidth=2   <span class="string">&quot; Indents will have a width of 2</span></span><br><span class="line"><span class="string">set expandtab      &quot;</span> Expand TABs to spaces</span><br><span class="line"><span class="built_in">set</span> smartindent</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;backspace to delete one level of indent</span></span><br><span class="line"><span class="string">set backspace=indent,eol,start </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">set number         &quot;</span> open line number</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> hlsearch       <span class="string">&quot; open highlight pattern</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">colorscheme molokai</span></span><br><span class="line"><span class="string">&quot;</span>colorscheme solarized</span><br></pre></td></tr></table></figure>
 <h3 id="vim-常用快捷键"><a class="markdownIt-Anchor" href="#vim-常用快捷键"></a> Vim 常用快捷键</h3>
 <p><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC9kZGU3N2UzYjI5OWY=" title="https://www.jianshu.com/p/dde77e3b299f">参考1<i class="fa fa-external-link"></i></span></p>
 <p><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82ODExMTQ3MQ==" title="https://zhuanlan.zhihu.com/p/68111471">参考2<i class="fa fa-external-link"></i></span></p>
