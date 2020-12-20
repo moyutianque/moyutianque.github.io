@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>新闻摘要 201220</title>
+    <url>/2020/12/20/News%20summary/201220/</url>
+    <content><![CDATA[<p>简述标题：</p>
+<ol>
+<li>Cyberpunk 2077 was supposed to be the biggest video game of the Year. What happened? (NYTimes)</li>
+</ol>
+<a id="more"></a>
+<h3 id="1-cyberpunk-2077-was-supposed-to-be-the-biggest-video-game-of-the-year-what-happened"><a class="markdownIt-Anchor" href="#1-cyberpunk-2077-was-supposed-to-be-the-biggest-video-game-of-the-year-what-happened"></a> 1. Cyberpunk 2077 was supposed to be the biggest video game of the Year. What happened?</h3>
+<p><strong>简述：</strong></p>
+<p>Cyberpunk 2077 has been founded full of a multitude of glitches and bugs, since it was released on December 10. Potential millions of refund requests overwhelmed Sony’s customer service. This roolout of Cyberpunk 2077 would become a disaster in its host company’s - CD Project Red - history. The company’s stock has dropped 41 percent.</p>
+<p>About CD Project Red: At the beginning of the company, because they did not buck some part of games out to other more experienced studios, the earliest version of Witcher game was buggy. But they still gained the a early fan base. The Witcher 3 won much of the reputation. However, while developing Cyberpunk 2077, the poor planning and incompetence management leads to delay and incomplete project.</p>
+<p><strong>生词：</strong></p>
+<table>
+<thead>
+<tr>
+<th>EN</th>
+<th>CN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hype</td>
+<td>不实宣传 n.</td>
+</tr>
+<tr>
+<td>class-action</td>
+<td>集体诉讼 n.</td>
+</tr>
+<tr>
+<td>immersive</td>
+<td>沉浸式的（游戏） adj.</td>
+</tr>
+<tr>
+<td>meme</td>
+<td>梗，有传播力的话题 n.</td>
+</tr>
+<tr>
+<td>rollout</td>
+<td>首次亮相 n.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>表述：</strong></p>
+<ul>
+<li>对于 CD Project Red 的创始人初期盗版游戏的描述：The two began importing games from the United States, and essentially repackaging and republishing them in Poland.</li>
+<li>Witcher 3 won awards for its detailed universe and rich storytelling.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>News summary</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Windows10 下 subsystem 安装</title>
     <url>/2020/12/10/Computer_Science/Settings/3_subsystem/</url>
     <content><![CDATA[<p>往往常规安装 Linux subsystem 的时候会默认安装在 C 盘中且无法变更。下文为一个工具推荐，使 subsystem 可以装在指定位置。</p>
